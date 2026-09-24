@@ -2,12 +2,33 @@ import { useEffect, useMemo, useState } from "react";
 import {
   FaChartBar,
   FaCode,
+  FaCodepen,
+  FaCoffee,
   FaDatabase,
+  FaFacebook,
   FaGithub,
+  FaHeart,
+  FaLinkedin,
+  FaMailBulk,
+  FaPatreon,
+  FaYoutube,
 } from "react-icons/fa";
 import { FiArrowUp, FiBookOpen, FiExternalLink, FiMenu, FiX } from "react-icons/fi";
 import styles from "./App.module.scss";
 import { wineDataSet } from "./files/wineDataSet";
+
+const footerLinks = [
+  { label: "Portfolio", href: "https://www.ashishranjan.net/", icon: FaCode },
+  { label: "GitHub", href: "https://github.com/a2rp", icon: FaGithub },
+  { label: "CodePen", href: "https://codepen.io/ash1198", icon: FaCodepen },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/aashishranjan", icon: FaLinkedin },
+  { label: "Facebook", href: "https://www.facebook.com/theash.ashish/", icon: FaFacebook },
+  { label: "YouTube", href: "https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1", icon: FaYoutube },
+  { label: "Email", href: "mailto:ash.ranjan09@gmail.com", icon: FaMailBulk },
+  { label: "Support", href: "https://a2rp-donation-page.netlify.app/", icon: FaHeart },
+  { label: "Buy Me a Coffee", href: "https://buymeacoffee.com/a2rp", icon: FaCoffee },
+  { label: "Patreon", href: "https://patreon.com/a2rp", icon: FaPatreon },
+];
 
 const groupBy = (items, key) =>
   items.reduce((groups, item) => {
@@ -200,9 +221,13 @@ function App() {
             <p className={styles.eyebrow}>Built for learning</p>
             <p className={styles.footerText}>A practical React view for exploring small datasets.</p>
           </div>
-          <nav className={styles.socialLinks} aria-label="Project links">
-            <a href="https://github.com/a2rp/manufac-javascript-react-winedata-stats-refactored-code" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><FaGithub aria-hidden="true" /><span className={styles.srOnly}>GitHub</span></a>
-            <a href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" title="Portfolio"><FaCode aria-hidden="true" /><span className={styles.srOnly}>Portfolio</span></a>
+          <nav className={styles.socialLinks} aria-label="Social and support links">
+            {footerLinks.map(({ label, href, icon: Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+                <Icon aria-hidden="true" />
+                <span className={styles.srOnly}>{label}</span>
+              </a>
+            ))}
           </nav>
         </div>
         <div className={styles.footerBottom}>
